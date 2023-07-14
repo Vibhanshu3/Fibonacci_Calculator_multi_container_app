@@ -20,11 +20,8 @@ jobs:
     - name: Running the client dev docker image.
       run: docker run -e CI=true docker-client npm test
 
-    - name: Log in to Docker Hub
-        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Docker login
+        run: docker login -u ${{secret.DOCKER_USERNAME}} -p ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build the docker image
       run: docker build -t docker-client ./client
@@ -34,6 +31,9 @@ jobs:
 
     - name: Docker push
       run: docker push ${{secret.DOCKER_USERNAME}}/docker_client
+      run: docker push ${{secret.DOCKER_USERNAME}}/docker_server
+      run: docker push ${{secret.DOCKER_USERNAME}}/docker_worker
+      run: docker push ${{secret.DOCKER_USERNAME}}/docker_nginx
 
     # - name: Generate deployment package
     #   run: zip -r deploy.zip . -x '*.git*'
