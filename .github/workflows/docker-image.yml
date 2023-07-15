@@ -47,6 +47,6 @@ jobs:
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         application_name: Fibonacci-Calculator
         environment_name: Fibonacci-Calculator-env
-        version_label: 125
+        version_label: 126
         region: ap-south-1
         deployment_package: fibCalcDeploy.zip
