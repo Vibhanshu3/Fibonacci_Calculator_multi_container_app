@@ -38,7 +38,7 @@ jobs:
         docker push ${{secrets.DOCKER_USERNAME}}/docker-nginx
 
     - name: Generate deployment package
-      run: zip -r deploy.zip . -x '*.git*'
+      run: zip -r fibCalcDeploy.zip . -x '*.git*'
 
     - name: Deploy to EB
       uses: einaregilsson/beanstalk-deploy@v21
@@ -47,6 +47,6 @@ jobs:
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         application_name: Fibonacci-Calculator
         environment_name: Fibonacci-Calculator-env
-        version_label: 123
+        version_label: 125
         region: ap-south-1
-        deployment_package: deploy.zip
+        deployment_package: fibCalcDeploy.zip
