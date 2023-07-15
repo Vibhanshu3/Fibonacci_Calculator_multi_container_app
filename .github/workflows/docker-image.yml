@@ -32,10 +32,10 @@ jobs:
 
     - name: Docker push
       run: | 
-        docker push ${{secrets.DOCKER_USERNAME}}/docker_client
-        docker push ${{secrets.DOCKER_USERNAME}}/docker_server
-        docker push ${{secrets.DOCKER_USERNAME}}/docker_worker
-        docker push ${{secrets.DOCKER_USERNAME}}/docker_nginx
+        docker push ${{secrets.DOCKER_USERNAME}}/docker-client
+        docker push ${{secrets.DOCKER_USERNAME}}/docker-server
+        docker push ${{secrets.DOCKER_USERNAME}}/docker-worker
+        docker push ${{secrets.DOCKER_USERNAME}}/docker-nginx
 
     # - name: Generate deployment package
     #   run: zip -r deploy.zip . -x '*.git*'
